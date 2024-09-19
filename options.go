@@ -110,3 +110,9 @@ func WithHTTPClient(h *http.Client) func(c *Config) {
 		c.httpClient = h
 	}
 }
+
+func WithProxyConnFactory(f func(func() (*websocket.Conn, error)) func() (*websocket.Conn, error)) func(c *Config) {
+	return func(c *Config) {
+		c.proxyConnFactory = f
+	}
+}
